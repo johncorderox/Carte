@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
-  get 'items/index'
-  get 'menus/index'
+  root  'home#index'
+
+  resources :menus
+
   devise_for :users
 end
