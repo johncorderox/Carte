@@ -6,13 +6,23 @@ class MenusController < ApplicationController
   end
 
   def new
-    @menu = Menu.new(params[:menu])
-    if @menu.save
 
-    else
-
-    end
   end
   def create
+    @new_menu = Menu.new(new_menu)
+    if @new_menu.save
+      redirect_to menus_path
+    else
+      puts @new_menu.errors.full_messages
+      redirect_back(fallback_location: root_path)
+    end
   end
+
+  private
+
+  def new_menu
+    params.require(:menu).permit(:name, :user_id)
+  end
+
+
 end

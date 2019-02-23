@@ -1,9 +1,10 @@
-<%= form_for @menu do |f| %>
-
-   <%= f.label :name %>:
-  <%= f.text_field :name %><br>
-
-   <%= f.label :status %>:
-  <%= f.text_field :status %><br>
-  <%= f.submit %>
-<% end %>
+<div class="row">
+   <div class="col-5 offset-1 mt-5">
+     <form action="/menus" method="post">
+     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+     Name: <input type="text" name="menu[name]" class="form-control"> <br />
+     <input type="hidden" name="menu[user_id]" value="<%= current_user.id %>">
+   <button class="btn btn-primary" type="submit">Create Menu</button>
+   </form>
+   </div>
+</div>
