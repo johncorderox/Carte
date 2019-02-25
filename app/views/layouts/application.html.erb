@@ -14,14 +14,57 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">
-    <img src="#" width="30" height="30" class="d-inline-block align-top" alt="">
-    Carte
-  </a>
-</nav>
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Carte</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="<%= menus_path %>" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Menus
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#">New Menu</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Menu Settings</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <%= current_user.email %>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#">Signed in as: <b><br><%= current_user.email %></b></a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Your Profile</a>
+            <a class="dropdown-item" href="#">Your Menus</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Help</a>
+            <a class="dropdown-item" href="<%= edit_user_registration_path %>">Settings</a>
+            <a class="dropdown-item" href="<%= destroy_user_session_path %>" data-method="delete">Sign Out</a>
+          </div>
+        </li>
+      </ul>
+      <form class="form-inline my-2 my-lg-0 mr-4">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form>
+      <a class="form-inline my-2 my-lg-0">
+     <a class="nav-link" href="<%= destroy_user_session_path %>" data-method="delete">Sign Out</a>
+    </a>
+    </div>
+
+  </nav>
+
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+
     <%= yield %>
   </body>
 </html>

@@ -13,3 +13,37 @@
  *= require_tree .
  *= require_self
  */
+.carte-input {
+  font-size: 20px;
+  padding: 10px;
+  background: transparent;
+  outline: 0;
+  border: 0;
+  border-bottom: 2px solid black;
+  width: 320px;
+}
+
+.carte-input:focus {
+  border-bottom: 2px solid #4371A1;
+}
+
+textarea {
+    font-size: 20px;
+    padding: 10px;
+    border-color: black;
+    border-width: 2px;
+    margin-top: 35px;
+    width: 360px;
+    height: 120px;
+}
+
+.find-my-menus {
+  background-color: #F6F8FA;
+  height: 550px;
+  overflow: scroll;
+  padding-top: 20px;
+  padding-left: 20px;
+}
+.find-my-menus::-webkit-scrollbar {
+width: 0px;
+}
