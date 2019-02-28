@@ -42,8 +42,13 @@ textarea {
   height: 550px;
   overflow: scroll;
   padding-top: 20px;
-  padding-left: 20px;
+  padding-left: 50px;
+  border-radius: 10px;
 }
 .find-my-menus::-webkit-scrollbar {
 width: 0px;
+}
+
+.card {
+  margin-left: 10px;
 }

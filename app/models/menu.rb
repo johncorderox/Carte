@@ -16,10 +16,32 @@ class Menu < ApplicationRecord
     where(status: "closed")
   end
 
+  # def self.change_status_of_menu(num)
+  #   case num
+  #   when 1
+  #     .status("New")
+  #   end
+  #  when 2
+  #     .status("Active")
+  #   end
+  #  when 3
+  #     .status("In Progress")
+  #   end
+  #   when 4
+  #     .status("Archived")
+  #   end
+  #   when 5
+  #     .status("Closed")
+  #   end
+  #   else
+  #     puts "Error updating menu status"
+  # end
+
+
   private
 
     def initialize_menu_status
-      self.status = "Closed" if self.status.nil?
+      self.status = "New" if self.status.nil?
     end
 
 end
