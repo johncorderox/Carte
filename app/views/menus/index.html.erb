@@ -1,19 +1,21 @@
 <div class="row">
   <div class="col-4">
     <div class="card">
-  <!-- <img class="card-img-top" src="" alt="Profile Image"> -->
-  <div class="card-body">
-    <h5 class="card-title"><%= current_user.email %></h5>
-    <p class="card-text"><%= current_user.bio %></p>
-  </div>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item">
-    <p>  <%= current_user.location %> </p>
-      <p><%= current_user.industry %></p>
+      <center>
+      <img class="card-img-top mb-3 mt-3" src="<%= image_url('logo.png')%>" style="width: 200px;" ></center>
+      <div class="card-body">
+        <h5 class="card-title">John - Admin</h5>
+        <p class="card-text">There are currently <b>22</b> customer support tickets</p>
 
-    </li>
-  </ul>
-</div>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">View Tickets (<b>22</b>)</li>
+        <li class="list-group-item" href>Closed Tickets (<b>102</b>)</li>
+      </ul>
+      <div class="card-body">
+        <a href="#" class="card-link">Call Support Center +880 - 555 -555</a>
+      </div>
+    </div>
   </div>
   <div class="col-8 find-my-menus">
     <h3>Menus: <%= @menus.count %></h3>

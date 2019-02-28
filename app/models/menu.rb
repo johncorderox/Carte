@@ -19,7 +19,7 @@ class Menu < ApplicationRecord
   private
 
     def initialize_menu_status
-      self.status = "New" if self.status.nil?
+      self.status = "Closed" if self.status.nil?
     end
 
 end

@@ -5,10 +5,8 @@ class MenusController < ApplicationController
     @menus = Menu.find_my_menus(current_user.id)
   end
 
-  def new
-  end
-
-  def show
+  def close_menu
+    redirect_back if Menu.find(params[:id]).status("Closed")
   end
 
   def create
@@ -23,6 +21,12 @@ class MenusController < ApplicationController
   def destroy
     Menu.destroy(params[:id])
     redirect_to menus_path
+  end
+
+  def new
+  end
+
+  def show
   end
 
   private

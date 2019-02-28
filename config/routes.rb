@@ -5,4 +5,6 @@ Rails.application.routes.draw do
   resources :menus
 
   devise_for :users
+
+  patch '/menus/closemenu'     => 'menus#close_menu'
 end
