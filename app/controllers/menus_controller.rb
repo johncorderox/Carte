@@ -1,5 +1,6 @@
 class MenusController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_menu, only: [:edit, :show]
 
   def index
     @menus = Menu.find_my_menus(current_user.id)
@@ -26,14 +27,15 @@ class MenusController < ApplicationController
   def new
   end
 
-  def show
-    @menu = Menu.find(params[:id])
-  end
 
   private
 
   def new_menu
     params.require(:menu).permit(:name, :user_id)
+  end
+
+  def set_menu
+    @menu = Menu.find(params[:id])
   end
 
 

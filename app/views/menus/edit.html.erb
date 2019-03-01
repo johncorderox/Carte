@@ -1,0 +1,33 @@
+<div class="container-fluid mb-5">
+  <h1>Edit <%= @menu.name %></h1>
+  <hr>
+  <div class="row">
+    <div class="col-6">
+      <div class="card bg-primary">
+<div class="card-header text-light">
+Menu Info
+</div>
+<ul class="list-group list-group-flush">
+  <li class="list-group-item">Status <input class="form-control" type="text" placeholder="<%= %>" readonly></li>
+  <li class="list-group-item">Last Updated On: <input class="form-control" type="text" placeholder="<%= @menu.updated_at.strftime("%B %d %Y - %l:%M %p") %>" readonly></li>
+  <li class="list-group-item">Created By: <input class="form-control" type="text" placeholder="<%= @menu.user_id %>" readonly></li>
+</ul>
+</div>
+</div>
+<div class="col-6">
+  <div class="card bg-primary">
+<div class="card-header text-light">
+Menu Info
+</div>
+<ul class="list-group list-group-flush">
+<li class="list-group-item">Access Code <input class="form-control" type="text" placeholder="<%= @pl%>" readonly></li>
+<li class="list-group-item">Created On: <input class="form-control" type="text" placeholder="" readonly></li>
+<li class="list-group-item">Created By: <input class="form-control" type="text" placeholder="<%=  %>" readonly></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+
+<h1>add logg info. which user made changes, add to item and on what day</h1>
