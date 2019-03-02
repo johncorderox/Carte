@@ -10,14 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_24_010838) do
+ActiveRecord::Schema.define(version: 2019_03_02_091314) do
+
+  create_table "headers", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "menu_id"
+    t.index ["menu_id"], name: "index_headers_on_menu_id"
+  end
 
   create_table "items", force: :cascade do |t|
     t.string "name"
-    t.float "price"
-    t.string "type"
+    t.string "size1"
+    t.string "size2"
+    t.string "size3"
+    t.boolean "vegan"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "header_id"
+    t.integer "menu_id"
+    t.index ["header_id"], name: "index_items_on_header_id"
+    t.index ["menu_id"], name: "index_items_on_menu_id"
   end
 
   create_table "menus", force: :cascade do |t|
@@ -26,6 +40,10 @@ ActiveRecord::Schema.define(version: 2019_02_24_010838) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
+    t.integer "header_id"
+    t.integer "item_id"
+    t.index ["header_id"], name: "index_menus_on_header_id"
+    t.index ["item_id"], name: "index_menus_on_item_id"
     t.index ["user_id"], name: "index_menus_on_user_id"
   end
 

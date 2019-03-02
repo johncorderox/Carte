@@ -27,16 +27,27 @@ class MenusController < ApplicationController
   def new
   end
 
-
-  private
-
-  def new_menu
-    params.require(:menu).permit(:name, :user_id)
+  def add_new_header
+    @header = Header.new(new_header)
+    if @header.save
+      redirect_to menus_path
+    else
+      redirect_to topic_path(params[:topic_id])
+    end
   end
 
-  def set_menu
-    @menu = Menu.find(params[:id])
-  end
+    private
 
+      def new_menu
+        params.require(:menu).permit(:name, :user_id)
+      end
+
+      def new_header
+        params.require(:header).permit(:name)
+      end
+
+      def set_menu
+        @menu = Menu.find(params[:id])
+      end
 
 end

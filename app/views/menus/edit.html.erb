@@ -1,33 +1,84 @@
 <div class="container-fluid mb-5">
   <h1>Edit <%= @menu.name %></h1>
-  <hr>
-  <div class="row">
+  <p>Status: <%= @menu.status %></p>
+  <p>Last Updated On: <%= @menu.updated_at %></p>
+
+  <ul class="nav nav-tabs">
+    <li class="nav-item">
+      <a class="nav-link active" href="#">Information</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Logs</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Settings</a>
+    </li>
+  </ul>
+  <div class="row mt-5">
     <div class="col-6">
       <div class="card bg-primary">
 <div class="card-header text-light">
-Menu Info
+Headers
 </div>
 <ul class="list-group list-group-flush">
-  <li class="list-group-item">Status <input class="form-control" type="text" placeholder="<%= %>" readonly></li>
-  <li class="list-group-item">Last Updated On: <input class="form-control" type="text" placeholder="<%= @menu.updated_at.strftime("%B %d %Y - %l:%M %p") %>" readonly></li>
-  <li class="list-group-item">Created By: <input class="form-control" type="text" placeholder="<%= @menu.user_id %>" readonly></li>
+  <li class="list-group-item">
+    <table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>test</td>
+      <td>
+        Delete
+      </td>
+    </tr>
+  </tbody>
+</table>
+  </li>
 </ul>
 </div>
 </div>
 <div class="col-6">
   <div class="card bg-primary">
 <div class="card-header text-light">
-Menu Info
+Line Items
 </div>
 <ul class="list-group list-group-flush">
-<li class="list-group-item">Access Code <input class="form-control" type="text" placeholder="<%= @pl%>" readonly></li>
-<li class="list-group-item">Created On: <input class="form-control" type="text" placeholder="" readonly></li>
-<li class="list-group-item">Created By: <input class="form-control" type="text" placeholder="<%=  %>" readonly></li>
+<li class="list-group-item">
+  <table class="table table-hover">
+<thead>
+  <tr>
+    <th>Name</th>
+    <th>Header</th>
+    <th>Actions</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td>Espresso</td>
+    <td>Hot Drinks</td>
+    <td>Delete</td>
+  </tr>
+</tbody>
+</table>
+</li>
 </ul>
 </div>
 </div>
 </div>
 </div>
+  <div class="container">
+    <div class="row">
+      <form action="/menus/add_new_header" method="POST">
+             <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+      <input type="text" class="carte-input" placeholder="Header Name" name="header[name]"><br>
+      <input type="hidden" name="menu_id" value="<%= @menu.id %>">
+      <button type="submit" class="btn btn-info mt-3">Add New Header</button>
+      </form>
+    </div>
 
-
-<h1>add logg info. which user made changes, add to item and on what day</h1>
+  </div>
