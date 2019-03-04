@@ -52,3 +52,12 @@ width: 0px;
 .card {
   margin-left: 10px;
 }
+
+.carte-card-box, .carte-card-box .list-group-item {
+  max-height: 350px;
+  height: 350px;
+  overflow: scroll;
+}
+td {
+  max-width: 300px;
+}

@@ -32,6 +32,7 @@
             Menus
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="<%= menus_path %>">Menus Home</a>
             <a class="dropdown-item" href="<%= new_menu_path %>">New Menu</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#">Menu Settings</a>
@@ -45,7 +46,7 @@
             <a class="dropdown-item" href="#">Signed in as: <b><br><%= current_user.email %></b></a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#">Your Profile</a>
-            <a class="dropdown-item" href="#">Your Menus</a>
+            <a class="dropdown-item" href="<%= menus_path %>">Your Menus</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#">Help</a>
             <a class="dropdown-item" href="<%= edit_user_registration_path %>">Settings</a>

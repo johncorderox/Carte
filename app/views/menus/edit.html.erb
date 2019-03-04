@@ -1,6 +1,5 @@
 <div class="container-fluid mb-5">
   <h1>Edit <%= @menu.name %></h1>
-  <p>Status: <%= @menu.status %></p>
   <p>Last Updated On: <%= @menu.updated_at %></p>
 
   <ul class="nav nav-tabs">
@@ -18,11 +17,14 @@
     <div class="col-6">
       <div class="card bg-primary">
 <div class="card-header text-light">
-Headers
+Headers: <%= @headers.count %>
 </div>
-<ul class="list-group list-group-flush">
+<ul class="list-group list-group-flush carte-card-box">
   <li class="list-group-item">
-    <table class="table table-hover">
+    <% if @headers.blank? %>
+        <p>There are no Headers...</p>
+    <% else %>
+    <table class="table table-striped">
   <thead>
     <tr>
       <th>Name</th>
@@ -30,14 +32,15 @@ Headers
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td>test</td>
-      <td>
-        Delete
-      </td>
-    </tr>
-  </tbody>
+      <% @headers.each do |headers| %>
+      <tr>
+        <td><%= headers.name %></td>
+        <td><a href="/headers/<%= headers.id%>" data-method="delete">Delete</a></td>
+      </tr>
+      <% end %>
+    </tbody>
 </table>
+<% end %>
   </li>
 </ul>
 </div>
@@ -45,10 +48,13 @@ Headers
 <div class="col-6">
   <div class="card bg-primary">
 <div class="card-header text-light">
-Line Items
+Line Items: <%= @items.count %>
 </div>
 <ul class="list-group list-group-flush">
-<li class="list-group-item">
+<li class="list-group-item carte-card-box">
+  <% if @items.blank? %>
+      <p>There are no Items...</p>
+  <% else %>
   <table class="table table-hover">
 <thead>
   <tr>
@@ -58,13 +64,15 @@ Line Items
   </tr>
 </thead>
 <tbody>
-  <tr>
-    <td>Espresso</td>
-    <td>Hot Drinks</td>
-    <td>Delete</td>
-  </tr>
-</tbody>
+    <% @items.each do |items| %>
+    <tr>
+      <td><%= items.name %></td>
+      <td><a href="/items/<%= items.id%>" data-method="delete">Delete</a></td>
+    </tr>
+    <% end %>
+  </tbody>
 </table>
+<% end %>
 </li>
 </ul>
 </div>
@@ -73,12 +81,43 @@ Line Items
 </div>
   <div class="container">
     <div class="row">
-      <form action="/menus/add_new_header" method="POST">
-             <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+      <form action="/headers" method="POST">
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
       <input type="text" class="carte-input" placeholder="Header Name" name="header[name]"><br>
+      <input type="hidden" name="header[menu_id]" value="<%= @menu.id %>">
       <input type="hidden" name="menu_id" value="<%= @menu.id %>">
       <button type="submit" class="btn btn-info mt-3">Add New Header</button>
       </form>
     </div>
-
+    <div class="row mt-5">
+      <form action="/items" method="POST">
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+      <input type="text" class="carte-input" placeholder="Item Name" name="item[name]"><br>
+      <div class="row">
+        <div class="col-4">
+          <input type="number" class="carte-input" placeholder="Small Size Price ($)" name="item[size1]">
+        </div>
+        <div class="col-4">
+                    <input type="number" class="carte-input" placeholder="Medium Size Price ($)" name="item[size2]">
+        </div>
+        <div class="col-4">
+                    <input type="number" class="carte-input" placeholder="Large Size Price ($)" name="item[size3]">
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col-8">
+          Header Category:
+          <select class="form-control" name="item[header_id]">
+            <% @headers.each do |header| %>
+              <option value="<%= header.id %>"><%= header.name %></option>
+                <% end %>
+          </select>
+        </div>
+      </div>
+      <input type="hidden" name="header[menu_id]" value="<%= @menu.id %>">
+      <input type="hidden" name="menu_id" value="<%= @menu.id %>">
+      <button type="submit" class="btn btn-info mt-3">Add New Header</button>
+      </form>
+    </div>
   </div>
+<hr>

@@ -1,8 +1,9 @@
 class Menu < ApplicationRecord
-  # belongs_to :food
-  # belongs_to :drink
-    belongs_to :user
-  #
+
+  belongs_to :user
+
+  has_many :headers
+  has_many :items
 
   validates :name, presence: true, length: { minimum: 1}
 

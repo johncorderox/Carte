@@ -6,6 +6,11 @@ class MenusController < ApplicationController
     @menus = Menu.find_my_menus(current_user.id)
   end
 
+  def edit
+    @headers = Header.where(menu_id: params[:id])
+    @items = Item.where(menu_id: params[:id])
+  end
+
   def close_menu
     redirect_back if Menu.find(params[:id]).status("Closed")
   end
@@ -27,23 +32,11 @@ class MenusController < ApplicationController
   def new
   end
 
-  def add_new_header
-    @header = Header.new(new_header)
-    if @header.save
-      redirect_to menus_path
-    else
-      redirect_to topic_path(params[:topic_id])
-    end
-  end
 
     private
 
       def new_menu
         params.require(:menu).permit(:name, :user_id)
-      end
-
-      def new_header
-        params.require(:header).permit(:name)
       end
 
       def set_menu
