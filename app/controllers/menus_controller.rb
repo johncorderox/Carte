@@ -8,7 +8,7 @@ class MenusController < ApplicationController
 
   def edit
     @headers = Header.where(menu_id: params[:id])
-    @items = Item.where(menu_id: params[:id])
+    @items = Item.joins(:header).where(menu_id: params[:id])
   end
 
   def close_menu
@@ -29,6 +29,14 @@ class MenusController < ApplicationController
     redirect_to menus_path
   end
 
+  def update
+    @menu_id = Menu.find(params[:id])
+    if @menu_id
+      @menu_id.update(update_status_of_menu)
+      redirect_back(fallback_location: root_path)
+    end
+  end
+
   def new
   end
 
@@ -41,6 +49,10 @@ class MenusController < ApplicationController
 
       def set_menu
         @menu = Menu.find(params[:id])
+      end
+
+      def update_status_of_menu
+        params.require(:status).permit(:status)
       end
 
 end

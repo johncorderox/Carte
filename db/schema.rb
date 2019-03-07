@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_02_091314) do
+ActiveRecord::Schema.define(version: 2019_03_04_092632) do
 
   create_table "headers", force: :cascade do |t|
     t.string "name"
@@ -25,7 +25,6 @@ ActiveRecord::Schema.define(version: 2019_03_02_091314) do
     t.string "size1"
     t.string "size2"
     t.string "size3"
-    t.boolean "vegan"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "header_id"
