@@ -11,6 +11,10 @@ class MenusController < ApplicationController
     @items = Item.joins(:header).where(menu_id: params[:id])
   end
 
+  def show
+    @show_header = Header.where(menu_id: params[:id])
+  end
+
   def close_menu
     redirect_back if Menu.find(params[:id]).status("Closed")
   end

@@ -4,7 +4,13 @@
   </div><br>
   <div class="row">
     <div class="col-6">
-
+    <% @show_header.each do |menu| %>
+    <h2><%= menu.name %></h2>
+    <% @item = Item.where(header_id: menu.id) %>
+      <% @item.each do |hi| %>
+      <%= hi.name %> <br>
+      <% end %>
+    <% end %>
     </div>
     <div class="col-6">
 

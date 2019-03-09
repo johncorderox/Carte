@@ -1,6 +1,6 @@
 <div class="container-fluid mb-5">
   <h1>Edit <%= @menu.name %></h1>
-  <p>Last Updated On: <%= @menu.updated_at %></p>
+  <p>Last Updated On: <%= @menu.updated_at.strftime("%B %d %Y - %l:%M %p") %></p>
 
   <ul class="nav nav-tabs">
     <li class="nav-item">
@@ -13,8 +13,8 @@
       <a class="nav-link" href="#">Settings</a>
     </li>
   </ul>
-  <div class="row mt-3 text-center">
-    <div class="col-5">
+  <div class="row mt-3">
+    <div class="col-6">
         Status: <%= @menu.status %>
         <form action="/menus/<%= @menu.id %>" method="post">
           <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
@@ -84,7 +84,7 @@ Line Items: <%= @items.count %>
     <% @items.each do |items| %>
     <tr>
       <td><%= items.name %></td>
-      <td><%= items.header.name %></td>
+      <td><%= items.header.name .........%> <%= items.size1 %></td>
       <td><a href="/items/<%= items.id%>" data-method="delete">Delete</a></td>
     </tr>
     <% end %>
@@ -133,7 +133,7 @@ Line Items: <%= @items.count %>
         </div>
       </div>
       <input type="hidden" name="item[menu_id]" value="<%= @menu.id %>">
-      <button type="submit" class="btn btn-info mt-3">Add New Header</button>
+      <button type="submit" class="btn btn-info mt-3">Add New Item</button>
       </form>
     </div>
   </div>
