@@ -1,8 +1,8 @@
 <div class="container-fluid mb-5">
-  <h1>Edit <%= @menu.name %></h1>
+  <h1>Edit <%= @menu.name %></h1><br>
   <p>Last Updated On: <%= @menu.updated_at.strftime("%B %d %Y - %l:%M %p") %></p>
-
-  <ul class="nav nav-tabs">
+  <a href="/menus/<%= @menu.id %>">Go Back</a>
+  <ul class="nav nav-tabs mt-3">
     <li class="nav-item">
       <a class="nav-link active" href="#">Information</a>
     </li>
@@ -13,8 +13,10 @@
       <a class="nav-link" href="#">Settings</a>
     </li>
   </ul>
-  <div class="row mt-3">
-    <div class="col-6">
+
+
+  <div class="row mt-4 text-center">
+    <div class="col-4">
         Status: <%= @menu.status %>
         <form action="/menus/<%= @menu.id %>" method="post">
           <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
@@ -25,11 +27,13 @@
             <option value="In Progress">In Progress</option>
             <option value="Archived">Archived</option>
             <option value="Closed">Closed</option>
-          </select>
+          </select><br>
           <button class="btn btn-info mt-3">Update</button>
         </form>
     </div>
   </div>
+
+
   <div class="row mt-5">
     <div class="col-6">
       <div class="card bg-primary">
@@ -72,7 +76,7 @@ Line Items: <%= @items.count %>
   <% if @items.blank? %>
       <p>There are no Items...</p>
   <% else %>
-  <table class="table table-hover">
+  <table class="table table-striped">
 <thead>
   <tr>
     <th>Name</th>
@@ -84,7 +88,7 @@ Line Items: <%= @items.count %>
     <% @items.each do |items| %>
     <tr>
       <td><%= items.name %></td>
-      <td><%= items.header.name .........%> <%= items.size1 %></td>
+      <td><%= items.header.name %></td>
       <td><a href="/items/<%= items.id%>" data-method="delete">Delete</a></td>
     </tr>
     <% end %>
@@ -137,4 +141,18 @@ Line Items: <%= @items.count %>
       </form>
     </div>
   </div>
-<hr>
+<div class="container menu-notes-container">
+  <hr>
+  <div class="row">
+    <div class="col-12">
+      <h2 class="mt-5">Menu Notes</h2>
+      <small class="text-muted">For Ex: "New item added 2/15/2019." or even "Changing to Archived."</small>
+      <form action="/menus/<%= @menu.id %>/notes" method="POST">
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+      <input name="_method" type="hidden" value="patch" />
+      <textarea name="menu[notes]" class="mt-4 menu-notes"><%= @menu.notes %></textarea>
+      <button type="submit" class="btn btn-success mt-5 mb-5 mr-4">Update Notes</button>
+      </form>
+    </div>
+  </div>
+</div>

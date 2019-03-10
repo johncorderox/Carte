@@ -44,6 +44,7 @@ textarea {
   padding-top: 20px;
   padding-left: 50px;
   border-radius: 10px;
+  margin-left: 40px;
 }
 .find-my-menus::-webkit-scrollbar {
 width: 0px;
@@ -60,4 +61,11 @@ width: 0px;
 }
 td {
   max-width: 300px;
+}
+
+.menu-notes {
+  width: 1000px;
+}
+.menu-notes-container {
+  height: 350px;
 }

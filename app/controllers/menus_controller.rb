@@ -41,6 +41,15 @@ class MenusController < ApplicationController
     end
   end
 
+  def notes
+    @menu_id = Menu.find(params[:id])
+    if @menu_id
+      @menu_id.update(update_menu_notes)
+      redirect_back(fallback_location: root_path)
+      flash[:notice] = "Notes successfully updated!"
+    end
+  end
+
   def new
   end
 
@@ -57,6 +66,10 @@ class MenusController < ApplicationController
 
       def update_status_of_menu
         params.require(:status).permit(:status)
+      end
+
+      def update_menu_notes
+        params.require(:menu).permit(:notes)
       end
 
 end

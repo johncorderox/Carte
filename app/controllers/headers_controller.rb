@@ -4,7 +4,8 @@ class HeadersController < ApplicationController
     if @header.save
       redirect_to edit_menu_path(params[:menu_id])
     else
-      # redirect_to topic_path(params[:topic_id])finish
+      redirect_back(fallback_location: menus_path)
+      flash[:alert] = @header.errors.full_messages
     end
   end
 

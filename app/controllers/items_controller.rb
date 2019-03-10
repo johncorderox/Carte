@@ -2,10 +2,10 @@ class ItemsController < ApplicationController
 
   def create
     @create_item = Item.new(new_item)
-    if @create_item.save
-      redirect_back(fallback_location: menus_path)
-    else
+    if not @create_item.save
+      flash[:alert] = @create_item.errors.full_messages
     end
+    redirect_back(fallback_location: menus_path)
   end
 
   def destroy
