@@ -13,12 +13,10 @@
       <a class="nav-link" href="#">Settings</a>
     </li>
   </ul>
-
-
   <div class="row mt-4 text-center">
     <div class="col-4">
         Status: <%= @menu.status %>
-        <form action="/menus/<%= @menu.id %>" method="post">
+        <form action="/menus/<%= @menu.id %>" method="post" class="mt-2">
           <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
           <input name="_method" type="hidden" value="patch" />
           <select class="form-control" name="status[status]">
@@ -28,12 +26,10 @@
             <option value="Archived">Archived</option>
             <option value="Closed">Closed</option>
           </select><br>
-          <button class="btn btn-info mt-3">Update</button>
+          <button class="btn btn-info mt-3">Update Status <i class="fas fa-sync-alt"></i></button>
         </form>
     </div>
   </div>
-
-
   <div class="row mt-5">
     <div class="col-6">
       <div class="card bg-primary">
@@ -141,18 +137,33 @@ Line Items: <%= @items.count %>
       </form>
     </div>
   </div>
-<div class="container menu-notes-container">
-  <hr>
-  <div class="row">
-    <div class="col-12">
-      <h2 class="mt-5">Menu Notes</h2>
-      <small class="text-muted">For Ex: "New item added 2/15/2019." or even "Changing to Archived."</small>
-      <form action="/menus/<%= @menu.id %>/notes" method="POST">
-      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-      <input name="_method" type="hidden" value="patch" />
-      <textarea name="menu[notes]" class="mt-4 menu-notes"><%= @menu.notes %></textarea>
-      <button type="submit" class="btn btn-success mt-5 mb-5 mr-4">Update Notes</button>
-      </form>
+<hr>
+  <div class="container">
+    <div class="accordion mt-5" id="accordionExample">
+  <div class="card">
+    <div class="card-header" id="headingOne">
+      <h2 class="mb-0">
+        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          Admin Notes
+        </button>
+      </h2>
+    </div>
+    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-12">
+            <h2 class="">Menu Notes</h2>
+            <small class="text-muted">For Ex: "New item added 2/15/2019." or even "Changing to Archived."</small>
+            <form action="/menus/<%= @menu.id %>/notes" method="POST">
+            <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+            <input name="_method" type="hidden" value="patch" />
+            <textarea name="menu[notes]" class="mt-4 menu-notes"><%= @menu.notes %></textarea>
+            <button type="submit" class="btn btn-info mt-5 mr-4">Update Notes <i class="fas fa-sync-alt"></i></button>
+            </form>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
+  </div>

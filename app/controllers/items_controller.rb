@@ -11,6 +11,7 @@ class ItemsController < ApplicationController
   def destroy
     Item.find(params[:id]).destroy
     redirect_back(fallback_location: menus_path)
+    flash[:notice] = "Item Destroyed!"
   end
 
   private

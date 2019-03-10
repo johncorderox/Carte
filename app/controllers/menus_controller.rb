@@ -23,6 +23,7 @@ class MenusController < ApplicationController
     @new_menu = Menu.new(new_menu)
     if @new_menu.save
       redirect_to menus_path
+      flash[:notice] = "Menu #{@new_menu.name} Created!"
     else
       redirect_back(fallback_location: root_path)
     end
@@ -31,6 +32,7 @@ class MenusController < ApplicationController
   def destroy
     Menu.destroy(params[:id])
     redirect_to menus_path
+    flash[:notice] = "Menu Destroyed!"
   end
 
   def update
@@ -38,6 +40,7 @@ class MenusController < ApplicationController
     if @menu_id
       @menu_id.update(update_status_of_menu)
       redirect_back(fallback_location: root_path)
+      flash[:notice] = "Menu has been Updated!"
     end
   end
 

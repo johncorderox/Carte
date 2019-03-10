@@ -12,6 +12,7 @@ class HeadersController < ApplicationController
   def destroy
     Header.destroy(params[:id])
     redirect_back(fallback_location: menus_path)
+    flash[:notice] = "Header Destroyed!"
   end
 
   private

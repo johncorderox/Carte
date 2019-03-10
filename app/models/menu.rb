@@ -5,7 +5,7 @@ class Menu < ApplicationRecord
   has_many :headers
   has_many :items
 
-  validates :name, presence: true, length: { minimum: 1}
+  validates :name, :notes, presence: true, length: { minimum: 1}
 
 
   before_save :initialize_menu_status
@@ -17,7 +17,6 @@ class Menu < ApplicationRecord
   def self.find_closed_menus
     where(status: "closed")
   end
-
 
   private
 
