@@ -5,6 +5,7 @@ class ItemsController < ApplicationController
     if not @create_item.save
       flash[:alert] = @create_item.errors.full_messages
     end
+    flash[:notice] = "Line Item #{@create_item.name} Created!"
     redirect_back(fallback_location: menus_path)
   end
 

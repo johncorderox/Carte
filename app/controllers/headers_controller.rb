@@ -3,6 +3,7 @@ class HeadersController < ApplicationController
     @header = Header.new(new_header)
     if @header.save
       redirect_to edit_menu_path(params[:menu_id])
+      flash[:notice] = "Header #{@header.name} Created!"
     else
       redirect_back(fallback_location: menus_path)
       flash[:alert] = @header.errors.full_messages

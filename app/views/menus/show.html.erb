@@ -1,12 +1,24 @@
 
-    <h4><%= current_user.company %></h4>
-
-    <% @show_header.each do |menu| %>
-    <h2><%= menu.name %></h2>
-    <% @item = Item.where(header_id: menu.id) %>
-      <% @item.each do |item| %>
-      <%= item.name %> <%= item.size1 %><br>
+<center><h1><%= current_user.company %></h1></center>
+<% @show_header.each do |header| %>
+<div class="row mt-5">
+  <div class="col-1"></div>
+  <div class="col-3">
+    <h1><%= header.name %></h1>
+  </div>
+  <div class="col-4">
+    <% @item = Item.where(header_id: header.id) %>
+      <% @item.each do |item_name| %>
+      <%= item_name.name %> <br>
       <% end %>
+  </div>
+  <div class="col-4">
+    <% @item.each do |item_name| %>
+    <%= item_name.size1 %> <br>
     <% end %>
-
-  <button type="submit" class="btn btn-warning text-light" onclick="location.href='/menus/<%= @menu.id %>/edit'"><i class="fas fa-sync-alt"></i> Edit This Menu</button> <button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Delete This Menu</button>
+  </div>
+</div>
+<% end %>
+<center class="mt-5">
+<button type="submit" class="btn btn-warning text-light" onclick="location.href='/menus/<%= @menu.id %>/edit'"><i class="fas fa-sync-alt"></i> Edit This Menu</button> <button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Delete This Menu</button>
+</center>

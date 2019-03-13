@@ -2,11 +2,11 @@ class Menu < ApplicationRecord
 
   belongs_to :user
 
-  has_many :headers
-  has_many :items
+  has_many :headers,  :dependent => :destroy
+  has_many :items,    :dependent => :destroy
+  has_many :logs,     :dependent => :destroy
 
-  validates :name, :notes, presence: true, length: { minimum: 1}
-
+  validates :name , presence: true, length: { minimum: 1}
 
   before_save :initialize_menu_status
 

@@ -22,6 +22,7 @@ class MenusController < ApplicationController
   def create
     @new_menu = Menu.new(new_menu)
     if @new_menu.save
+      create_new_menu_log(@new_menu)
       redirect_to menus_path
       flash[:notice] = "Menu #{@new_menu.name} Created!"
     else
@@ -30,7 +31,8 @@ class MenusController < ApplicationController
   end
 
   def destroy
-    Menu.destroy(params[:id])
+  @destroy_menu = Menu.destroy(params[:id])
+    destroy_new_menu_log(@destroy_menu)
     redirect_to menus_path
     flash[:notice] = "Menu Destroyed!"
   end
@@ -53,6 +55,23 @@ class MenusController < ApplicationController
     end
   end
 
+  def download
+
+  @menu = Menu.find(params[:id])
+
+  if @menu.notes.blank?
+    redirect_back(fallback_location: root_path)
+    flash[:alert] = " There are no Notes to download...!"
+  else
+    @name_of_menu = @menu.name.parameterize()
+
+    full_new_notes_file = File.new("public/MENU_#{@name_of_menu}.txt", "w")
+    full_new_notes_file.puts(@menu.notes)
+    full_new_notes_file.close
+
+    send_file "#{Rails.root}/public/MENU_#{@name_of_menu}.txt"
+    end
+  end
   def new
   end
 

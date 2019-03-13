@@ -159,6 +159,7 @@ Line Items: <%= @items.count %>
             <input name="_method" type="hidden" value="patch" />
             <textarea name="menu[notes]" class="mt-4 menu-notes"><%= @menu.notes %></textarea>
             <button type="submit" class="btn btn-info mt-5 mr-4">Update Notes <i class="fas fa-sync-alt"></i></button>
+            <%= link_to "Download Notes", "/menus/download/#{@menu.id}", class: "btn btn-small btn-success mt-5 mr-4" %>
             </form>
           </div>
         </div>

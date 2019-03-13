@@ -8,9 +8,11 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  patch '/menus/closemenu'       => 'menus#close_menu'
+  patch '/menus/closemenu'          => 'menus#close_menu'
 
   patch '/menus/:id/notes'          => 'menus#notes'
+
+  get   '/menus/download/:id'       => 'menus#download'
 
 
 end
