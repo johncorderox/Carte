@@ -14,5 +14,7 @@ Rails.application.routes.draw do
 
   get   '/menus/download/:id'       => 'menus#download'
 
+  get   '/menus/:id/logs'           => 'logs#show'
+
 
 end

@@ -6,10 +6,6 @@ class ApplicationController < ActionController::Base
     Log.create(description: "Menu Created", status: "Success", code: 200, menu_id: menu.id)
   end
 
-  def destroy_new_menu_log(menu)
-    Log.create(description: "Menu #{menu.name} was Deleted on #{Time.now.strftime("%B %d %Y - %l:%M %p")}", status: "Success", code: 200, menu_id: menu.id)
-  end
-
   protected
     def configure_permitted_parameters
       devise_parameter_sanitizer.permit(:account_update, keys:

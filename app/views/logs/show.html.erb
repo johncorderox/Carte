@@ -1,0 +1,45 @@
+<div class="container-fluid mb-5">
+  <h1>Edit <%= @menu.name %></h1><br>
+  <p>Last Updated On: <%= @menu.updated_at.strftime("%B %d %Y - %l:%M %p") %></p>
+  <a href="/menus/<%= @menu.id %>">Go Back</a>
+  <ul class="nav nav-tabs mt-3">
+    <li class="nav-item">
+      <a class="nav-link" href="/menus/<%= @menu.id %>/edit">Information</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link active" href="/menus/<%= @menu.id %>/logs">Logs</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Settings</a>
+    </li>
+  </ul>
+  <div class="container mt-5">
+    <center>
+    <h2>Logs</h2>
+      <small class="text-muted">Logs cannot be deleted and track most menu actions!</small>
+    </center>
+    <table class="table table-striped">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Log</th>
+      <th>Status</th>
+      <th>Code</th>
+      <th>Date</th>
+    </tr>
+  </thead>
+  <tbody>
+      <% @logs.each do |log| %>
+      <tr>
+        <td><%= log.id %></td>
+        <td><%= log.description %></td>
+        <td><%= log.status %></td>
+        <td><%= log.code %></td>
+        <td><%= log.created_at.strftime("%B %d %Y - %l:%M %p") %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+  </div>
+
+</div>

@@ -32,7 +32,6 @@ class MenusController < ApplicationController
 
   def destroy
   @destroy_menu = Menu.destroy(params[:id])
-    destroy_new_menu_log(@destroy_menu)
     redirect_to menus_path
     flash[:notice] = "Menu Destroyed!"
   end
