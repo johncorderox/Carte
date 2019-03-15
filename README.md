@@ -1,9 +1,8 @@
-# Carte ![Maintenance](https://img.shields.io/maintenance/yes/2019.svg?style=flat-square)
-### A menu builder for your business <i>~In Development</i>
-
-This menu builder can create a menu for your buisness and generate a basic yet stylish menu for you to print or use on monitors for display. Create Items and let Carte generate everything for you! 😎
+<h1 align="center">Carte</h1>
+<p align="center">
+A menu builder for your business <i>~In Development</i>
 <br>
-dev notes: 3/15/19 I need to find a gem to take a screenshot so it'll save menus for you on your desktop.
+  dev notes: 3/15/19 I need to find a gem to take a screenshot so it'll save menus for you on your desktop.<br>
 
 Deploy date: 3/20/19
 <br><br>
