@@ -6,6 +6,14 @@ class ApplicationController < ActionController::Base
     Log.create(description: "Menu Created", status: "Success", code: 200, menu_id: menu.id)
   end
 
+  def after_sign_up_path_for(resource)
+   menus_path
+ end
+
+ def after_sign_in_path_for(resource)
+   menus_path
+ end
+
   protected
     def configure_permitted_parameters
       devise_parameter_sanitizer.permit(:account_update, keys:

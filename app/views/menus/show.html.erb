@@ -1,5 +1,5 @@
-
-<center><h1><%= current_user.company %></h1></center>
+<div class="carte-menu-image"></div>
+<center><h1 class="mt-5"><%= current_user.company %></h1></center>
 <% @show_header.each do |header| %>
 <div class="row mt-5">
   <div class="col-1"></div>
@@ -21,4 +21,6 @@
 <% end %>
 <center class="mt-5">
 <button type="submit" class="btn btn-warning text-light" onclick="location.href='/menus/<%= @menu.id %>/edit'"><i class="fas fa-sync-alt"></i> Edit This Menu</button> <button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Delete This Menu</button>
+<button type="button" class="btn btn-primary text-light" onclick="location.href='/menus/<%= @menu.id %>/edit'">Go Live</button>
 </center>
+<div class="carte-menu-image"></div>

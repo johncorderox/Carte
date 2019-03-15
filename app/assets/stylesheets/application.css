@@ -74,3 +74,9 @@ td {
 .menu-notes-container {
   height: 350px;
 }
+.carte-menu-image {
+  background-image: url('regal.png');
+  width: 100%;
+  background-repeat: repeat-x;
+  height: 120px;
+}

@@ -4,12 +4,11 @@
 <button type="button" id="toggle_login" class="btn btn-primary">Get Started</button>
 <div id="login_form">
   <%= form_for(:user, :url => session_path(:user)) do |f| %>
-    <%= f.text_field :email %> <br>
-    <%= f.password_field :password %><br>
+    <%= f.text_field :email, class: "carte-input", placeholder: "Email*" %> <br>
+    <%= f.password_field :password, class: "carte-input", placeholder: "Password*" %><br>
     <%= f.check_box :remember_me %><br>
     <%= f.label :remember_me %><br>
-    <%= f.submit 'Sign in' %>
-    <%= link_to "Forgot your password?", new_password_path(:user) %>
+    <%= f.submit 'Sign in', class: "btn btn-success" %>
   <% end %>
   </center>
 </div>
