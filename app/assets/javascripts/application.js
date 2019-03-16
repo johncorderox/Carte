@@ -18,3 +18,15 @@ $(document).ready(function(){
     $('#login_form').toggle();
   });
 });
+
+var disclaimerArr = [
+
+  "Consuming raw or undercooked meats, poultry, seafood, shellfish, or eggs may increase your risk of foodborne illness.",
+  "Our menu does not contain any suitable Vegan or Vegetarian dishes currently at this time.",
+  "Our food may contain peanuts, dairy, fish, soy, wheat and alcohol."
+]
+
+function changeDisclaimer(value) {
+
+    $('#disclaimer').val(disclaimerArr[value]);
+}

@@ -5,6 +5,7 @@
   <div class="col-1"></div>
   <div class="col-3">
     <h1><%= header.name %></h1>
+    <hr>
   </div>
   <div class="col-4">
     <% @item = Item.where(header_id: header.id) %>
@@ -14,7 +15,7 @@
   </div>
   <div class="col-4">
     <% @item.each do |item_name| %>
-  S <%= item_name.size1 %> M <%= item_name.size1 %> L <%= item_name.size1 %> <br>
+  S <%= item_name.size1 %> - M <%= item_name.size1 %> - L <%= item_name.size1 %> <br>
     <% end %>
   </div>
 </div>
@@ -30,6 +31,6 @@
 <center class="mt-5 mb-3">
 <button type="submit" class="btn btn-warning text-light" onclick="location.href='/menus/<%= @menu.id %>/edit'"><i class="fas fa-sync-alt"></i> Edit This Menu</button>
 <button type="submit" class="btn btn-danger ml-3"><i class="fas fa-trash-alt"></i> Delete This Menu</button>
-<button type="button" target="_blank"  class="btn btn-primary text-light ml-3" onclick="location.href='/menus/<%= @menu.id %>/live'">Go Live</button>
+<button type="button" target="_blank"  class="btn btn-primary text-light ml-3" onclick="location.href='/menus/<%= @menu.id %>/live'"><i class="fas fa-tv"></i> Go Live</button>
 </center>
 <div class="carte-menu-image"></div>
