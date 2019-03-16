@@ -1,6 +1,7 @@
 class MenusController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_menu, only: [:edit, :show]
+  before_action :set_menu, only: [:edit, :show, :live]
+  before_action :set_menu_vars, only: [:show, :live]
 
   def index
     @menus = Menu.find_my_menus(current_user.id)
@@ -9,10 +10,6 @@ class MenusController < ApplicationController
   def edit
     @headers = Header.where(menu_id: params[:id])
     @items = Item.joins(:header).where(menu_id: params[:id])
-  end
-
-  def show
-    @show_header = Header.where(menu_id: params[:id])
   end
 
   def close_menu
@@ -71,7 +68,23 @@ class MenusController < ApplicationController
     send_file "#{Rails.root}/public/MENU_#{@name_of_menu}.txt"
     end
   end
+
+  def disclaimer
+    @menu_id = Menu.find(params[:id])
+    if @menu_id
+      @menu_id.update(update_menu_disclaimer)
+      redirect_back(fallback_location: root_path)
+      flash[:notice] = "Disclaimer successfully updated!"
+    end
+  end
+
   def new
+  end
+
+  def show
+  end
+
+  def live
   end
 
 
@@ -85,6 +98,10 @@ class MenusController < ApplicationController
         @menu = Menu.find(params[:id])
       end
 
+      def set_menu_vars
+        @show_header = Header.where(menu_id: params[:id])
+      end
+
       def update_status_of_menu
         params.require(:status).permit(:status)
       end
@@ -92,5 +109,10 @@ class MenusController < ApplicationController
       def update_menu_notes
         params.require(:menu).permit(:notes)
       end
+
+      def update_menu_disclaimer
+        params.require(:menu).permit(:disclaimer)
+      end
+
 
 end

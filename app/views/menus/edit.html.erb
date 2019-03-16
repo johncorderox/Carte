@@ -13,7 +13,8 @@
       <a class="nav-link" href="#">Settings</a>
     </li>
   </ul>
-  <div class="row mt-4 text-center">
+  <center>
+  <div class="mt-4">
     <div class="col-4">
         Status: <%= @menu.status %>
         <form action="/menus/<%= @menu.id %>" method="post" class="mt-2">
@@ -30,6 +31,7 @@
         </form>
     </div>
   </div>
+</center>
   <div class="row mt-5">
     <div class="col-6">
       <div class="card bg-primary">
@@ -133,8 +135,30 @@ Line Items: <%= @items.count %>
         </div>
       </div>
       <input type="hidden" name="item[menu_id]" value="<%= @menu.id %>">
-      <button type="submit" class="btn btn-info mt-3">Add New Item</button>
+      <button type="submit" class="btn btn-info mt-3 mb-4">Add New Item</button>
       </form>
+    </div>
+  </div>
+  <hr>
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-12">
+        <h2>Disclaimers</h2>
+        <small class="text-muted">Disclaimers appear on the bottom of menus to notify customers of either allergy warnings or food legal terms.</small>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-7 mt-3">
+        <form action="/menus/<%= @menu.id %>/disclaimer" method="POST">
+          <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+          <input name="_method" type="hidden" value="patch" />
+          <input type="text" class="carte-input disclaimer" name="menu[disclaimer]" value="<%=@menu.disclaimer %>">
+          <button type="submit" class="btn btn-primary mt-3">Add Disclaimer</button>
+        </form>
+      </div>
+    </div>
+    <div class="col-7 mt-3">
+        <small class="text-muted">You can even use one of our predefined disclaimers by selecting the one you like which will automatically copy it for you.</small>
     </div>
   </div>
 <hr>

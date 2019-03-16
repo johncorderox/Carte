@@ -12,9 +12,14 @@ Rails.application.routes.draw do
 
   patch '/menus/:id/notes'          => 'menus#notes'
 
+  patch '/menus/:id/disclaimer'     =>'menus#disclaimer'
+
   get   '/menus/download/:id'       => 'menus#download'
 
   get   '/menus/:id/logs'           => 'logs#show'
+
+  get   '/menus/:id/live'           => 'menus#live'
+
 
 
 end

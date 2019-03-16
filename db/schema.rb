@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_12_044545) do
+ActiveRecord::Schema.define(version: 2019_03_16_004921) do
 
   create_table "headers", force: :cascade do |t|
     t.string "name"
@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 2019_03_12_044545) do
     t.datetime "updated_at", null: false
     t.integer "user_id"
     t.text "notes"
+    t.text "disclaimer"
     t.index ["user_id"], name: "index_menus_on_user_id"
   end
 
