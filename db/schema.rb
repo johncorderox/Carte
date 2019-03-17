@@ -10,13 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_16_004921) do
+ActiveRecord::Schema.define(version: 2019_03_17_090112) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "headers", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "menu_id"
+    t.bigint "menu_id"
     t.index ["menu_id"], name: "index_headers_on_menu_id"
   end
 
@@ -28,8 +31,8 @@ ActiveRecord::Schema.define(version: 2019_03_16_004921) do
     t.boolean "vegan"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "header_id"
-    t.integer "menu_id"
+    t.bigint "header_id"
+    t.bigint "menu_id"
     t.index ["header_id"], name: "index_items_on_header_id"
     t.index ["menu_id"], name: "index_items_on_menu_id"
   end
@@ -38,7 +41,7 @@ ActiveRecord::Schema.define(version: 2019_03_16_004921) do
     t.string "description"
     t.string "status"
     t.integer "code"
-    t.integer "menu_id"
+    t.bigint "menu_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["menu_id"], name: "index_logs_on_menu_id"
@@ -49,7 +52,7 @@ ActiveRecord::Schema.define(version: 2019_03_16_004921) do
     t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id"
+    t.bigint "user_id"
     t.text "notes"
     t.text "disclaimer"
     t.index ["user_id"], name: "index_menus_on_user_id"
@@ -71,4 +74,9 @@ ActiveRecord::Schema.define(version: 2019_03_16_004921) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "headers", "menus"
+  add_foreign_key "items", "headers"
+  add_foreign_key "items", "menus"
+  add_foreign_key "logs", "menus"
+  add_foreign_key "menus", "users"
 end

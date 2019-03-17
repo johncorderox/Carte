@@ -1,12 +1,12 @@
-<h1 align="center">Carte</h1> 
+<h1 align="center">Carte</h1>
 <p align="center">
   <img alt="Maintenance" src="https://img.shields.io/maintenance/yes/2019.svg?style=flat-square">
   <img alt="PyPI - Status" src="https://img.shields.io/pypi/status/Rails.svg?style=flat-square"><br>
   <strong>A menu builder for your business <i>~In Development</i></strong>
 <br>
- This is a simple menu builder built in rails where you add items to your menu and let Carte do the rest 😎. This site will generate a menu to print out or even a full image to put on external monitor displays. 
+ This is a simple menu builder built in rails where you add items to your menu and let Carte do the rest 😎. This site will generate a menu to print out or even a full image to put on external monitor displays.
 <br><br><br>
-  
+
  ## Features
 - **Login System** - Users have access to company menus
 - **Menu Builder** - Builder menus in under 5 minutes with headers and line items
@@ -16,8 +16,8 @@
 <a href="http://tinypic.com?ref=2llca53" target="_blank"><img src="http://i64.tinypic.com/2llca53.jpg" border="0" height="400" width="400"></a>
 <a href="http://tinypic.com?ref=28lb2ps" target="_blank"><img src="http://i63.tinypic.com/28lb2ps.jpg" border="0" height="600" width="400"></a>
 
-## License 
-Carte is currently under the Apache License 2.0 
+## License
+Carte is currently under the Apache License 2.0
 
 ## About the Author
 
