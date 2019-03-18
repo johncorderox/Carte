@@ -5,7 +5,8 @@
   <img alt="GitHub issues" src="https://img.shields.io/github/issues/johncorderox/carte.svg?style=flat-square"><br>
   <strong>A menu builder for your business <i>~In Development</i></strong>
 <br>
- This is a simple menu builder built in rails where you add items to your menu and let Carte do the rest 😎. This site will generate a menu to print out or even a full image to put on external monitor displays.
+ This is a simple menu builder built in rails where you add items to your menu and let Carte do the rest 😎. This site will generate a menu to print out or even a full image to put on external monitor displays.<br>
+  You can test out the project <a href="https://carte-menu.herokuapp.com/">here</a>.
 <br><br><br>
 
  ## Features
