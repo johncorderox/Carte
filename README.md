@@ -1,7 +1,8 @@
 <h1 align="center">Carte</h1>
 <p align="center">
   <img alt="Maintenance" src="https://img.shields.io/maintenance/yes/2019.svg?style=flat-square">
-  <img alt="PyPI - Status" src="https://img.shields.io/pypi/status/Rails.svg?style=flat-square"><br>
+  <img alt="PyPI - Status" src="https://img.shields.io/pypi/status/Rails.svg?style=flat-square">
+  <img alt="GitHub issues" src="https://img.shields.io/github/issues/johncorderox/carte.svg?style=flat-square"><br>
   <strong>A menu builder for your business <i>~In Development</i></strong>
 <br>
  This is a simple menu builder built in rails where you add items to your menu and let Carte do the rest 😎. This site will generate a menu to print out or even a full image to put on external monitor displays.
