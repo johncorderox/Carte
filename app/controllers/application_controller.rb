@@ -6,6 +6,10 @@ class ApplicationController < ActionController::Base
     Log.create(description: "Menu Created", status: "Success", code: 200, menu_id: menu.id)
   end
 
+  def add_profile_views_count(menu_id)
+    Menu.find(menu_id).increment!(:page_views)
+  end
+
   def after_sign_up_path_for(resource)
    menus_path
  end

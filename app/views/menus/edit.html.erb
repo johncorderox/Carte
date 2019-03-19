@@ -1,16 +1,13 @@
-<div class="container-fluid mb-5">
+<div class="container mb-5">
   <h1>Edit <%= @menu.name %></h1><br>
   <p>Last Updated On: <%= @menu.updated_at.strftime("%B %d %Y - %l:%M %p") %></p>
   <a href="/menus/<%= @menu.id %>">View Menu</a>
-  <ul class="nav nav-tabs mt-3">
+  <ul class="nav nav-tabs mt-4">
     <li class="nav-item">
       <a class="nav-link active" href="#">Information</a>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="/menus/<%= @menu.id %>/logs">Logs</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">Settings</a>
     </li>
   </ul>
   <center>
@@ -173,8 +170,15 @@ Line Items: <%= @items.count %>
     </div>
   </div>
 <hr>
-  <div class="container">
-    <div class="accordion mt-5" id="accordionExample">
+  <div class="container mt-5">
+    <h2>Admin Settings</h2>
+    <ul class="list-group mt-3">
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        Page Views
+        <span class="badge badge-primary badge-pill"><%= @menu.page_views %></span>
+      </li>
+    </ul>
+  <div class="accordion mt-5" id="accordionExample">
   <div class="card">
     <div class="card-header" id="headingOne">
       <h2 class="mb-0">

@@ -78,10 +78,11 @@ class MenusController < ApplicationController
     end
   end
 
-  def new
+  def show
+    add_profile_views_count(@menu.id)
   end
 
-  def show
+  def new
   end
 
   def live

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get 'settings/index'
   root  'home#index'
 
   resources :menus
