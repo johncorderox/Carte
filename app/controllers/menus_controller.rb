@@ -66,6 +66,7 @@ class MenusController < ApplicationController
     full_new_notes_file.close
 
     send_file "#{Rails.root}/public/MENU_#{@name_of_menu}.txt"
+    create_downloaded_file_log(@menu)
     end
   end
 

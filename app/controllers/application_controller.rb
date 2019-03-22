@@ -6,6 +6,22 @@ class ApplicationController < ActionController::Base
     Log.create(description: "Menu Created", status: "Success", code: 200, menu_id: menu.id)
   end
 
+  def create_new_header_log(header)
+    Log.create(description: "Header Created", status: "Success", code: 200, menu_id: header.menu_id)
+  end
+
+  def create_destroy_header_log(header)
+    Log.create(description: "Header - #{header.name} - was deleted", status: "Success", code: 200, menu_id: header.menu_id)
+  end
+
+  def create_destroy_header_error_log(header)
+    Log.create(description: "Header could not be created", status: "Error", code: 404, menu_id: header.menu_id)
+  end
+
+  def create_downloaded_file_log(menu)
+    Log.create(description: "A User - #{current_user.email} downloaded notes from the Menu - #{menu.name}", status: "Pass", code: 200, menu_id: menu.id)
+  end
+
   def add_profile_views_count(menu_id)
     Menu.find(menu_id).increment!(:page_views)
   end

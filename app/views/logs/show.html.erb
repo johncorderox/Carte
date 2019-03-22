@@ -27,7 +27,15 @@
   </thead>
   <tbody>
       <% @logs.each do |log| %>
-      <tr>
+        <% if log.status == "Success" %>
+        <tr class="table-success">
+        <% elsif log.status == "Error" %>
+        <tr class="table-danger">
+        <% elsif log.status == "Pass" %>
+        <tr class="table-warning">
+        <% else %>
+        <tr>
+      <% end %>
         <td><%= log.id %></td>
         <td><%= log.description %></td>
         <td><%= log.status %></td>
