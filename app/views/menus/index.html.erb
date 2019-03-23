@@ -11,8 +11,23 @@
         <li class="list-group-item" href><%= current_user.bio %></li>
       </ul>
       <div class="card-body">
+        <h5 class="card-title"><%= current_user.company %></h5>
+      </div>
+      <div class="card-body">
         <a href="/users/edit" class="card-link">Edit Profile</a>
       </div>
+      <% if not @last_log.empty? %>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          <br>
+          <h5>Last Log</h5>
+          <hr>
+          <p><%= @last_log.first.description %></p>
+          <br>
+          <%= link_to 'View Menu Log', "/menus/#{@last_log.first.menu_id}/logs", class: "btn btn-success"%>
+        </li>
+      </ul>
+    <% end %>
     </div>
   </div>
   <div class="col-8 find-my-menus">

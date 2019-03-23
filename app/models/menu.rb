@@ -19,6 +19,7 @@ class Menu < ApplicationRecord
     where(status: "closed")
   end
 
+
   private
 
     def initialize_menu_status

@@ -5,6 +5,7 @@ class MenusController < ApplicationController
 
   def index
     @menus = Menu.find_my_menus(current_user.id)
+    @last_log = Log.find_last_log(current_user.id)
   end
 
   def edit
@@ -59,6 +60,7 @@ class MenusController < ApplicationController
     redirect_back(fallback_location: root_path)
     flash[:alert] = " There are no Notes to download...!"
   else
+    create_note
     @name_of_menu = @menu.name.parameterize()
 
     full_new_notes_file = File.new("public/MENU_#{@name_of_menu}.txt", "w")
