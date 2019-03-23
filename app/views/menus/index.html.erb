@@ -5,17 +5,15 @@
       <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
       <div class="card-body">
         <h5 class="card-title"><%= current_user.company %></h5>
-      </div>
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item"><%= current_user.location %> <br></li>
-        <li class="list-group-item" href><%= current_user.bio %></li>
-      </ul>
-      <div class="card-body">
-        <h5 class="card-title"><%= current_user.industry %></h5>
-      </div>
-      <div class="card-body">
         <a href="/users/edit" class="card-link">Edit Profile</a>
       </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+        <i class="fas fa-map"></i> <%= current_user.location %><br>
+        <i class="fas fa-user-edit"></i> <%= current_user.bio %> <br> <br>
+        <i class="fas fa-store"></i> <%= current_user.industry %> <br>
+          </<br></li>
+      </ul>
       <% if not @last_log.empty? %>
       <ul class="list-group list-group-flush">
         <li class="list-group-item">
@@ -31,7 +29,14 @@
     </div>
   </div>
   <div class="col-8 find-my-menus">
-    <h3>Menus: <%= @menus.count %></h3>
+    <div class="row">
+      <div class="col-10 mb-3">
+          <center>  <h3>Menus: <%= @menus.count %></h3></center>
+      </div>
+      <div class="col-2">
+        <a href="<%= new_menu_path %>"><button class="btn btn-secondary btn-sm">New Menu <i class="fas fa-plus"></i></button></a>
+      </div>
+    </div>
     <% if @menus.blank? %>
       No Menu created.... Create one? <%= link_to "New Menu", new_menu_path %>
     <% else %>
