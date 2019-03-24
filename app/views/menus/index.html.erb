@@ -2,6 +2,7 @@
 <div class="row">
   <div class="col-3">
     <div class="card">
+        <%= image_tag "coffee#{rand(3)}.gif", class: "card-img-top" %>  
       <div class="card-body">
         <h5 class="card-title"><%= current_user.company %></h5>
         <a href="/users/edit" class="card-link">Edit Profile</a>
