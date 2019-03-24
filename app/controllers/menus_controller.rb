@@ -18,14 +18,7 @@ class MenusController < ApplicationController
   end
 
   def create
-    @new_menu = Menu.new(new_menu)
-    if @new_menu.save
-      create_new_menu_log(@new_menu)
-      redirect_to menus_path
-      flash[:notice] = "Menu #{@new_menu.name} Created!"
-    else
-      redirect_back(fallback_location: root_path)
-    end
+    @menu = Menu.create(menu_params)
   end
 
   def destroy
@@ -86,6 +79,7 @@ class MenusController < ApplicationController
   end
 
   def new
+     @menu = Menu.new
   end
 
   def live
@@ -94,7 +88,7 @@ class MenusController < ApplicationController
 
     private
 
-      def new_menu
+      def menu_params
         params.require(:menu).permit(:name, :user_id)
       end
 

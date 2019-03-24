@@ -1,0 +1,7 @@
+
+<% if @menu.errors.blank? %>
+  $('#menu-modal').modal('hide');
+  $('table tbody').append('<%= j render "menu_row", menu: @menu %>');
+<% else %>
+alert("Error creating Menu");
+<% end %>

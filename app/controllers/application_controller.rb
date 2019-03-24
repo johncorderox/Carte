@@ -2,10 +2,6 @@ class ApplicationController < ActionController::Base
 
   before_action :configure_permitted_parameters, if: :devise_controller?
 
-  def create_new_menu_log(menu)
-    Log.create(description: "Menu Created", status: "Success", code: 200, menu_id: menu.id, user_id: current_user.id)
-  end
-
   def create_new_header_log(header)
     Log.create(description: "Header Created", status: "Success", code: 200, menu_id: header.menu_id, user_id: current_user.id)
   end
