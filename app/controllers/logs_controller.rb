@@ -4,6 +4,7 @@ class LogsController < ApplicationController
     @menu = Menu.find(params[:id])
     @logs = Log.find_menu_logs(params[:id])
   end
+
   def index
   end
 
