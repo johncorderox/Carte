@@ -2,14 +2,14 @@
 <div class="row">
   <div class="col-3">
     <div class="card">
-        <%= image_tag "coffee#{rand(3)}.gif", class: "card-img-top" %>  
+        <%= image_tag "coffee#{rand(3)}.gif", class: "card-img-top" %>
       <div class="card-body">
         <h5 class="card-title"><%= current_user.company %></h5>
         <a href="/users/edit" class="card-link">Edit Profile</a>
       </div>
       <ul class="list-group list-group-flush">
         <li class="list-group-item">
-        <i class="fas fa-map"></i> <%= current_user.location %><br>
+        <i class="fas fa-map"></i> <%= current_user.location %><br><br>
         <i class="fas fa-user-edit"></i> <%= current_user.bio %> <br> <br>
         <i class="fas fa-store"></i> <%= current_user.industry %> <br>
           </<br></li>

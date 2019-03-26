@@ -1,5 +1,5 @@
 <div class="container mb-5 mt-5">
-  <h1>Edit <%= @menu.name %></h1><br>
+  <h1><%= @menu.name %></h1><br>
   <p>Last Updated On: <%= @menu.updated_at.strftime("%B %d %Y - %l:%M %p") %></p>
   <a href="/menus/<%= @menu.id %>">Go Back</a>
   <ul class="nav nav-tabs mt-3">
@@ -9,12 +9,23 @@
     <li class="nav-item">
       <a class="nav-link active" href="/menus/<%= @menu.id %>/logs">Logs</a>
     </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/menus/<%= @menu.id %>/settings">Settings</a>
+    </li>
   </ul>
   <div class="container mt-5">
     <center>
     <h2>Logs</h2>
       <small class="text-muted">Logs cannot be deleted and track most menu actions!</small>
     </center>
+    <div class="row">
+      <div class="col-2">
+        <button type="button" class="btn btn-outline-info">Flush Logs</button>
+      </div>
+      <div class="col-2">
+        <button type="button" class="btn btn-outline-info">Download Logs</button>
+      </div>
+    </div>
     <table class="table table-striped">
   <thead>
     <tr>

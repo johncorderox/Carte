@@ -1,13 +1,12 @@
 Rails.application.routes.draw do
 
-  get 'settings/index'
-  root  'home#index'
-
   resources :menus
   resources :headers, only: [:create, :destroy]
   resources :items,   only: [:create, :destroy]
 
   devise_for :users
+
+  root  'home#index'
 
   patch '/menus/closemenu'          => 'menus#close_menu'
 
@@ -20,6 +19,8 @@ Rails.application.routes.draw do
   get   '/menus/:id/logs'           => 'logs#show'
 
   get   '/menus/:id/live'           => 'menus#live'
+
+  get   '/menus/:id/settings'        => 'settings#show'
 
 
 

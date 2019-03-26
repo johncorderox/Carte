@@ -1,0 +1,32 @@
+<div class="container mb-5 mt-5">
+  <center>
+  <h1>Menu Settings</h1>
+    <small class="text-muted">View Stats, Edit and Delete Menu Actions</small>
+  </center>
+  <a href="/menus/<%= @menu.id %>">Go Back</a>
+  <ul class="nav nav-tabs mt-3">
+    <li class="nav-item">
+      <a class="nav-link" href="/menus/<%= @menu.id %>/edit">Information</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/menus/<%= @menu.id %>/logs">Logs</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link active" href="/menus/<%= @menu.id %>/settings">Settings</a>
+    </li>
+  </ul>
+  <div class="container mt-5">
+    <h2>make menu private, make menu searchable?
+
+      delete menu, edit name, add guests to edit menu?
+
+      do you want this menu logged?
+
+      make logs downloadable?
+
+      figure out how to delete notes in /public
+
+      make logs section scrollable after certain height
+    </h2>
+
+</div>
