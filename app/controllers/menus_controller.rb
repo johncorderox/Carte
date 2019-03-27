@@ -1,7 +1,8 @@
 class MenusController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_menu, only: [:edit, :show, :live]
+  before_action :set_menu, only: [:edit, :show, :live, :download]
   before_action :set_menu_vars, only: [:show, :live]
+  before_action :set_menu_id, only: [:update, :disclaimer]
 
   def index
     @menus = Menu.find_my_menus(current_user.id)
@@ -22,38 +23,35 @@ class MenusController < ApplicationController
   end
 
   def destroy
-  @destroy_menu = Menu.destroy(params[:id])
+    @destroy_menu = Menu.destroy(params[:id])
     redirect_to menus_path
     flash[:notice] = "Menu Destroyed!"
   end
 
   def update
-    @menu_id = Menu.find(params[:id])
-    if @menu_id
-      @menu_id.update(update_status_of_menu)
-      redirect_back(fallback_location: root_path)
-      flash[:notice] = "Menu has been Updated!"
-    end
+    @menu_id.update(update_menu_name)
+    redirect_back(fallback_location: root_path)
+    flash[:notice] = "Menu Name has been Updated!"
+  end
+
+  def status
+    @menu_id.update(update_status_of_menu)
+    redirect_back(fallback_location: root_path)
+    flash[:notice] = "Menu has been Updated!"
   end
 
   def notes
-    @menu_id = Menu.find(params[:id])
-    if @menu_id
-      @menu_id.update(update_menu_notes)
-      redirect_back(fallback_location: root_path)
-      flash[:notice] = "Notes successfully updated!"
-    end
+    @menu_id.update(update_menu_notes)
+    redirect_back(fallback_location: root_path)
+    flash[:notice] = "Notes successfully updated!"
   end
 
   def download
-
-  @menu = Menu.find(params[:id])
 
   if @menu.notes.blank?
     redirect_back(fallback_location: root_path)
     flash[:alert] = " There are no Notes to download...!"
   else
-    create_note
     @name_of_menu = @menu.name.parameterize()
 
     full_new_notes_file = File.new("public/MENU_#{@name_of_menu}.txt", "w")
@@ -66,20 +64,16 @@ class MenusController < ApplicationController
   end
 
   def disclaimer
-    @menu_id = Menu.find(params[:id])
-    if @menu_id
-      @menu_id.update(update_menu_disclaimer)
-      redirect_back(fallback_location: root_path)
-      flash[:notice] = "Disclaimer successfully updated!"
-    end
-  end
-
-  def show
-    add_profile_views_count(@menu.id)
+    @menu_id.update(update_menu_disclaimer)
+    redirect_back(fallback_location: root_path)
+    flash[:notice] = "Disclaimer successfully updated!"
   end
 
   def new
      @menu = Menu.new
+  end
+
+  def show
   end
 
   def live
@@ -88,16 +82,16 @@ class MenusController < ApplicationController
 
     private
 
-      def menu_params
-        params.require(:menu).permit(:name, :user_id)
-      end
-
       def set_menu
         @menu = Menu.find(params[:id])
       end
 
       def set_menu_vars
         @show_header = Header.where(menu_id: params[:id])
+      end
+
+      def set_menu_id
+        @menu_id = Menu.find(params[:id])
       end
 
       def update_status_of_menu
@@ -110,6 +104,14 @@ class MenusController < ApplicationController
 
       def update_menu_disclaimer
         params.require(:menu).permit(:disclaimer)
+      end
+
+      def update_menu_name
+        params.require(:menu).permit(:name)
+      end
+
+      def menu_params
+        params.require(:menu).permit(:name, :user_id)
       end
 
 
