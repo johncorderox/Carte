@@ -2,7 +2,7 @@ class MenusController < ApplicationController
   before_action :authenticate_user!
   before_action :set_menu, only: [:edit, :show, :live, :download]
   before_action :set_menu_vars, only: [:show, :live]
-  before_action :set_menu_id, only: [:update, :disclaimer, :notes, :status]
+  before_action :set_menu_id, only: [:update, :disclaimer, :notes]
 
   def index
     @menus = Menu.find_my_menus(current_user.id)
@@ -35,9 +35,12 @@ class MenusController < ApplicationController
   end
 
   def status
-    @menu_id.update(update_status_of_menu)
-    redirect_back(fallback_location: root_path)
-    flash[:notice] = "Menu has been Updated!"
+    @menu_id = Menu.find(params[:id])
+    if @menu_id
+      @menu_id.update(update_status_of_menu)
+      redirect_back(fallback_location: root_path)
+      flash[:notice] = "Menu has been Updated!"
+    end
   end
 
   def notes
