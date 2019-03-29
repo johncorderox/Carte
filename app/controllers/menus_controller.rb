@@ -2,7 +2,7 @@ class MenusController < ApplicationController
   before_action :authenticate_user!
   before_action :set_menu, only: [:edit, :show, :live, :download]
   before_action :set_menu_vars, only: [:show, :live]
-  before_action :set_menu_id, only: [:update, :disclaimer]
+  before_action :set_menu_id, only: [:update, :disclaimer, :notes, :status]
 
   def index
     @menus = Menu.find_my_menus(current_user.id)
