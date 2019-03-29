@@ -9,12 +9,15 @@
     <li class="nav-item">
       <a class="nav-link" href="/menus/<%= @menu.id %>/logs">Logs</a>
     </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/menus/<%= @menu.id %>/settings">Settings</a>
+    </li>
   </ul>
   <center>
   <div class="mt-4">
     <div class="col-4">
         Status: <%= @menu.status %>
-        <form action="/menus/<%= @menu.id %>" method="post" class="mt-2">
+        <form action="/menus/<%= @menu.id %>/status" method="post" class="mt-2">
           <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
           <input name="_method" type="hidden" value="patch" />
           <select class="form-control" name="status[status]">
@@ -100,8 +103,7 @@ Line Items: <%= @items.count %>
     <div class="row">
       <form action="/headers" method="POST">
       <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-      <input type="text" class="carte-input" placeholder="Header Name" name="header[name]"><br>
-      <input type="hidden" name="header[menu_id]" value="<%= @menu.id %>">
+      <input type="text" class="carte-input" placeholder="Header Name" name="name"><br>
       <input type="hidden" name="menu_id" value="<%= @menu.id %>">
       <button type="submit" class="btn btn-info mt-3">Add New Header</button>
       </form>
@@ -171,16 +173,19 @@ Line Items: <%= @items.count %>
   </div>
 <hr>
   <div class="container mt-5">
-    <h2>Admin Settings</h2>
-    <ul class="list-group mt-3">
-      <li class="list-group-item d-flex justify-content-between align-items-center">
-        Page Views
-        <span class="badge badge-primary badge-pill"><%= @menu.page_views %></span>
-      </li>
-    </ul>
-    <p class="mt-2">You can delete the entire menu below but note: it will delete all associated headers and line items bond to it!</p>
-    <%= button_to "Delete This Menu", {:controller => :menus,
-      :action => 'destroy', :id => @menu.id }, data: { confirm: "Are you sure you want to delete?" }, :method => :delete, class: "btn btn-danger mt-3" %>
+    <!-- <h2>Deletion</h2>
+    <p>You can Destroy all Line or Headers here. You can even reset the entire menu to all null items.</p>
+    <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+<div class="btn-group" role="group">
+  <button id="btnGroupDrop1" type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <i class="far fa-trash-alt"></i> Flush Menu Items
+  </button>
+  <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+    <a class="dropdown-item" href="#"><i class="far fa-times-circle"></i> Flush All Headers</a>
+    <a class="dropdown-item" href="#"><i class="far fa-times-circle"></i> Flush All Line Items</a>
+  </div>
+</div>
+</div> -->
   <div class="accordion mt-5" id="accordionExample">
   <div class="card">
     <div class="card-header" id="headingOne">
