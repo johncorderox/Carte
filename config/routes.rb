@@ -10,6 +10,8 @@ Rails.application.routes.draw do
 
   patch '/menus/closemenu'          => 'menus#close_menu'
 
+  patch '/menus/:id/status'         => 'menus#status'
+
   patch '/menus/:id/notes'          => 'menus#notes'
 
   patch '/menus/:id/disclaimer'     =>'menus#disclaimer'
@@ -20,7 +22,7 @@ Rails.application.routes.draw do
 
   get   '/menus/:id/live'           => 'menus#live'
 
-  get   '/menus/:id/settings'        => 'settings#show'
+  get   '/menus/:id/settings'       => 'settings#show'
 
 
 

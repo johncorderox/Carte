@@ -1,6 +1,6 @@
 class HeadersController < ApplicationController
   def create
-    @header = Header.new(new_header)
+    @header = HeaderService.new(params).call
     if @header.save
       create_new_header_log(@header)
       redirect_to edit_menu_path(params[:menu_id])
@@ -19,8 +19,9 @@ class HeadersController < ApplicationController
     create_destroy_header_log(@header)
   end
 
-  private
-    def new_header
-      params.require(:header).permit(:name, :menu_id)
-    end
+  def flush_headers
+    @menu_id = Menu.find(params[:id])
+    Header.where(menu_id: @menu_id).delete_all
+  end
+
 end
