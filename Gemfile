@@ -49,6 +49,10 @@ group :development, :test do
   gem 'shutup'
   gem 'kaminari', '< 1.0.0'
   gem 'rails_db', '2.0.4'
+  gem 'rspec-rails', '~> 3.5'
+  gem 'cucumber-rails', require: false
+  gem 'shoulda-matchers', git: 'https://github.com/thoughtbot/shoulda-matchers.git', branch: 'rails-5'
+  gem 'factory_bot_rails'
 end
 
 group :development do
@@ -61,7 +65,8 @@ group :development do
 end
 
 group :test do
-  # Adds support for Capybara system testing and selenium driver
+  gem 'rails-controller-testing'
+  gem 'database_cleaner'
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome
