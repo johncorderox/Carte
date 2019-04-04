@@ -16,8 +16,4 @@ RSpec.describe MenusController do
     end
   end
 
-
-
-
-
 end
