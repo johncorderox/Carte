@@ -1,5 +1,4 @@
 Rails.application.configure do
-    config.factory_bot.definition_file_paths = ["custom/factories"]
   # Settings specified here will take precedence over those in config/application.rb.
 
   config.serve_static_assets = true
