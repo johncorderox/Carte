@@ -18,8 +18,7 @@
 - **Admin Notes** - Share information between employees for price changes or other policies
 - **Logging System** - Logs login logs and bug related logs for the CP.
 <br><br>
-<a href="http://i68.tinypic.com/2e5uy9s.jpg" target="_blank"><img src="http://i68.tinypic.com/2e5uy9s.jpg" border="0" height="400" width="400"></a>
-<a href="http://tinypic.com?ref=28lb2ps" target="_blank"><img src="http://i63.tinypic.com/28lb2ps.jpg" border="0" height="600" width="400"></a>
+<a href="http://i68.tinypic.com/2e5uy9s.jpg" target="_blank"><img src="http://i68.tinypic.com/2e5uy9s.jpg" border="0" 
 
 ## License
 Carte is currently under the Apache License 2.0
