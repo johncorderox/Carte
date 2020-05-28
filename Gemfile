@@ -47,7 +47,7 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'hirb'
   gem 'shutup'
-  gem 'kaminari', '< 1.0.0'
+  gem 'kaminari', '< 2.0.0'
   gem 'rails_db', '2.0.4'
   gem 'rspec-rails', '~> 3.5'
   gem 'cucumber-rails', require: false
